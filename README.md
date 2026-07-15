@@ -17,8 +17,7 @@ This tiny, ultra-premium app allows you to instantly check your EV's **State of 
 
 ## ✨ Features
 - **Instant SOH Sync:** Secure OTP-based login to fetch real-time battery degradation stats.
-- **Ultra-Premium UI:** Built entirely in Jetpack Compose featuring a cinematic dark theme, smooth animated splash screens, and gorgeous glassmorphic designs.
-- **The "Glow" Button:** We custom-built a mesmerizing, breathing neon-glow submit button specifically for this app—it is incredibly satisfying to press!
+- **Community Like Button:** We added a "Like" button directly in the app to help us track how many active users we have! If you use the app and find it helpful, **please make sure to hit the Like button** so we can see how large our community is growing!
 - **100% Open Source:** No hidden trackers, no analytics, no ads. Just pure, functional code.
 
 ## 🛡️ Trust & Security
