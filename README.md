@@ -6,6 +6,7 @@
   [![GitHub Repo stars](https://img.shields.io/github/stars/SAM0-0/U4ME?style=social)](https://github.com/SAM0-0/U4ME)
   [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
   [![Android](https://img.shields.io/badge/Platform-Android-3DDC84.svg?logo=android)](https://www.android.com/)
+  [![Web](https://img.shields.io/badge/Platform-Web-4285F4.svg?logo=googlechrome)](https://bev-soh.edgeone.dev/)
 </div>
 
 <br/>
