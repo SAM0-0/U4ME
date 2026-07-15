@@ -29,8 +29,14 @@ You never have to blindly trust our release files. You can inspect every single 
 ## 📥 Installation
 1. Navigate to the [Releases page](https://github.com/SAM0-0/U4ME/releases).
 2. Download the latest `app-release.apk` file.
-3. Open the file on your Android device to install (ensure "Install from unknown sources" is enabled in your settings).
 4. Launch the app, login via OTP, and check your SOH!
+
+## 🌐 Web Version (No Download Required)
+Don't want to install an APK? No problem! You can use our fully trusted, cloud-hosted web version here:
+👉 **[bev-soh.edgeone.dev](https://bev-soh.edgeone.dev/)**
+
+The web version runs the exact same HTML/JS code you see in the `web/index.html` file in this repository. It uses Cloudflare as a secure backend proxy to route traffic directly to the Mahindra me4u infrastructure and return the responses properly. It is completely safe and 100% transparent!
+
 
 ## 🤝 Feedback & Issues
 We want to make this app as polished as possible! 
