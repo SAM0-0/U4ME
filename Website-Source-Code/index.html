@@ -131,10 +131,13 @@ input::placeholder{color:#444}
 
   <!-- DASHBOARD -->
   <div id="viewDash" class="hidden fade-in">
-    <div id="dashContent"></div>
-    <div style="text-align:center;padding:20px 0">
-      <button class="btn" style="width:auto;padding:10px 32px;opacity:0.5" onclick="logout()">Sign Out</button>
+    <div style="display:flex;justify-content:flex-end;margin-bottom:12px;">
+      <button onclick="logout()" style="background:rgba(255,80,80,0.1);color:#ff8888;border:1px solid rgba(255,80,80,0.2);padding:6px 14px;border-radius:20px;font-size:11px;cursor:pointer;text-transform:uppercase;letter-spacing:1px;font-weight:600;display:flex;align-items:center;gap:6px;transition:all 0.2s;" onmouseover="this.style.background='rgba(255,80,80,0.2)'" onmouseout="this.style.background='rgba(255,80,80,0.1)'">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+        Sign Out
+      </button>
     </div>
+    <div id="dashContent"></div>
   </div>
 
   <div class="log-toggle" onclick="toggleLog()">&#9662; API Log</div>
@@ -143,7 +146,8 @@ input::placeholder{color:#444}
 
 <script>
 const BASE="https://bev-cors.pixel3demog.workers.dev";
-let S={id:genId(),jwt:null,mfa:null,refresh:null,logOpen:false};
+let S=JSON.parse(localStorage.getItem('u4me_state'))||{id:genId(),jwt:null,mfa:null,refresh:null,logOpen:false};
+const saveS=()=>localStorage.setItem('u4me_state',JSON.stringify(S));
 
 function genId(){const c="abcdefghijklmnopqrstuvwxyz0123456789";let s="";for(let i=0;i<16;i++)s+=c[Math.floor(Math.random()*c.length)];return s}
 
@@ -199,14 +203,14 @@ async function doLogin(){
     if(r.s!==200&&r.s!==401)throw new Error(errMsg(r.j));
 
     const jwtH=r.json["jwttoken"]||r.json["Jwttoken"];
-    if(jwtH){S.jwt=jwtH.replace("Bearer ","");log("INFO","Direct JWT received");await fetchAll();return}
+    if(jwtH){S.jwt=jwtH.replace("Bearer ","");saveS();log("INFO","Direct JWT received");await fetchAll();return}
 
     const mfaH=r.json["x-amzn-remapped-authorization"]||r.json["X-Amzn-Remapped-Authorization"];
     if(!mfaH){
       if(r.j?.error)throw new Error(errMsg(r.j));
       throw new Error("Login failed");
     }
-    S.mfa=mfaH.replace("Bearer ","");
+    S.mfa=mfaH.replace("Bearer ","");saveS();
 
     step(3);loadMsg("Requesting OTP...");
     r=await api("GET","/V1/requestaccess/generateOtpAppIdMapping",{"Authorization":`Bearer ${S.mfa}`});
@@ -229,7 +233,7 @@ async function doOtp(){
     const r=await api("POST","/V1/auth/validate/otp",{"Authorization":`Bearer ${S.mfa}`,"Otp":otp,"Appuniqueid":S.id,"Countryid":"41"});
     const jwtH=r.json["jwttoken"]||r.json["Jwttoken"];
     if(!jwtH)throw new Error("Invalid OTP");
-    S.jwt=jwtH.replace("Bearer ","");
+    S.jwt=jwtH.replace("Bearer ","");saveS();
     await fetchAll();
   }catch(e){
     loadMsg(`<div class="status error">${e.message}</div><button class="btn-ghost" onclick="goBack()">← Back to login</button>`);
@@ -319,16 +323,19 @@ function renderBreakdown(d){
 }
 
 function logout(){
-  S.jwt=null;S.mfa=null;
-  document.getElementById("inMobile").value="";
-  document.getElementById("inPass").value="";
-  document.getElementById("inOtp").value="";
-  show("viewLogin");step(0);
+  localStorage.removeItem('u4me_state');
+  location.reload();
 }
 
 document.getElementById("inMobile").addEventListener("keydown",e=>{if(e.key==="Enter")doLogin()});
 document.getElementById("inPass").addEventListener("keydown",e=>{if(e.key==="Enter")doLogin()});
 document.getElementById("inOtp").addEventListener("keydown",e=>{if(e.key==="Enter")doOtp()});
+
+if(S.jwt) {
+  show("viewLoading");
+  step(4);
+  fetchAll();
+}
 </script>
 </body>
 </html>
