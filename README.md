@@ -22,10 +22,17 @@ This tiny, ultra-premium app allows you to instantly check your EV's **State of 
 - **100% Open Source:** No hidden trackers, no analytics, no ads. Just pure, functional code.
 
 ## 🛡️ Trust & Security
-We know that putting your phone number into a random APK is scary. 
+We know that putting your phone number into a random APK or website is scary. 
 **That is exactly why U4Me is 100% open source.** 
 
+The repository is cleanly split so you can easily audit it:
+- **`app/`**: Contains the source code for the Android application.
+- **`Website-Source-Code/`**: Contains ONLY the files used by the web version.
+
 You never have to blindly trust our release files. You can inspect every single line of code in this repository, verify exactly where the network requests are going, and even compile the app yourself directly from the source code using Android Studio!
+
+### How the "Like" Button Works
+When you tap the Like button, it makes a simple, anonymous request to an independent Cloudflare worker just to increment and fetch the total number of community likes. It does NOT send your phone number, VIN, or any personal data whatsoever!
 
 ## 📥 Installation
 1. Navigate to the [Releases page](https://github.com/SAM0-0/U4ME/releases).
@@ -36,7 +43,12 @@ You never have to blindly trust our release files. You can inspect every single 
 Don't want to install an APK? No problem! You can use our fully trusted, cloud-hosted web version here:
 👉 **[bev-soh.edgeone.dev](https://bev-soh.edgeone.dev/)**
 
-The web version runs the exact same HTML/JS code you see in the `web/index.html` file in this repository. It uses Cloudflare as a secure backend proxy to route traffic directly to the Mahindra me4u infrastructure and return the responses properly. It is completely safe and 100% transparent!
+The web version runs the exact same HTML/JS code you see in the `Website-Source-Code/index.html` file in this repository. 
+
+### What is the Cloudflare Worker & CORS?
+If you've ever tried to run the HTML file directly on your computer, you might have hit a "CORS error". Browsers block cross-origin requests to Mahindra's servers for security reasons. To fix this seamlessly, the website uses a **Cloudflare Worker** as a secure backend proxy to route traffic directly to the Mahindra me4u infrastructure and return the responses properly. 
+
+For full transparency, the exact Cloudflare Worker source code running on the proxy is included in `Website-Source-Code/cloudflare_worker_proxy.txt`. It simply forwards your requests and adds CORS headers. Nothing is logged or saved!
 
 
 ## 🤝 Feedback & Issues
