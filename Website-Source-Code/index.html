@@ -120,7 +120,7 @@ input::placeholder{color:#444}
     <div class="back" onclick="goBack()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Back</div>
     <h2>Verify OTP</h2>
     <p style="font-size:13px;color:#555;margin-bottom:16px">Enter the code sent to your device</p>
-    <input type="tel" id="inOtp" placeholder="000000" maxlength="6" inputmode="numeric" pattern="[0-9]*" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
+    <input type="tel" id="inOtp" placeholder="000000" maxlength="10" inputmode="numeric" pattern="[0-9]*" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
     <button class="btn" id="btnOtp" onclick="doOtp()">Verify</button>
   </div>
 
@@ -221,7 +221,7 @@ async function doLogin(){
 
 async function doOtp(){
   const otp=document.getElementById("inOtp").value.trim();
-  if(!otp||otp.length!==6){document.getElementById("inOtp").classList.add("shake");setTimeout(()=>document.getElementById("inOtp").classList.remove("shake"),400);return}
+  if(!otp||otp.length<3){document.getElementById("inOtp").classList.add("shake");setTimeout(()=>document.getElementById("inOtp").classList.remove("shake"),400);return}
   const b=document.getElementById("btnOtp");
   b.disabled=true;b.classList.add("btn-loading");
   try{

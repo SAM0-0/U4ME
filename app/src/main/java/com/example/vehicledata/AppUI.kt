@@ -348,7 +348,7 @@ fun OtpScreen(viewModel: AuthViewModel, navController: NavController) {
                     modifier = Modifier.fillMaxWidth().height(50.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = Color.White),
                     shape = RoundedCornerShape(12.dp),
-                    enabled = otp.isNotBlank() && uiState !is AuthUiState.Loading
+                    enabled = otp.length >= 3 && uiState !is AuthUiState.Loading
                 ) {
                     if (uiState is AuthUiState.Loading) {
                         CircularProgressIndicator(color = Color.Black, modifier = Modifier.size(24.dp))
