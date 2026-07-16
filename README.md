@@ -27,7 +27,7 @@ We know that putting your phone number into a random APK or website is scary.
 
 The repository is cleanly split so you can easily audit it:
 - **`app/`**: Contains the source code for the Android application.
-- **`Website-Source-Code/`**: Contains ONLY the files used by the web version.
+- **`docs/`**: Contains ONLY the files used by the web version.
 
 You never have to blindly trust our release files. You can inspect every single line of code in this repository, verify exactly where the network requests are going, and even compile the app yourself directly from the source code using Android Studio!
 
@@ -43,14 +43,14 @@ When you tap the Like button, it makes a simple, anonymous request to an indepen
 Don't want to install an APK? No problem! You can use our fully trusted, cloud-hosted web version here:
 👉 **[bev-soh.edgeone.dev](https://bev-soh.edgeone.dev/)**
 
-*Tip: If you prefer, you can simply download the `Website-Source-Code/index.html` file to your computer and double-click it to run the app locally right in your own browser! (Note: It will still use the Cloudflare Worker mentioned below to handle CORS).*
+*Tip: If you prefer, you can simply download the `docs/index.html` file to your computer and double-click it to run the app locally right in your own browser! (Note: It will still use the Cloudflare Worker mentioned below to handle CORS).*
 
-The web version runs the exact same HTML/JS code you see in the `Website-Source-Code/index.html` file in this repository. 
+The web version runs the exact same HTML/JS code you see in the `docs/index.html` file in this repository. 
 
 ### What is the Cloudflare Worker & CORS?
 If you've ever tried to run the HTML file directly on your computer, you might have hit a "CORS error". Browsers block cross-origin requests to Mahindra's servers for security reasons. To fix this seamlessly, the website uses a **Cloudflare Worker** as a secure backend proxy to route traffic directly to the Mahindra me4u infrastructure and return the responses properly. 
 
-For full transparency, the exact Cloudflare Worker source code running on the proxy is included in `Website-Source-Code/cloudflare_worker_proxy.txt`. It simply forwards your requests and adds CORS headers. Nothing is logged or saved!
+For full transparency, the exact Cloudflare Worker source code running on the proxy is included in `docs/cloudflare_worker_proxy.txt`. It simply forwards your requests and adds CORS headers. Nothing is logged or saved!
 
 
 ## 🤝 Feedback & Issues

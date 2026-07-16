@@ -1,0 +1,44 @@
+export default {
+  async fetch(request) {
+    const url = new URL(request.url);
+    const target = "https://interface.mahindramobilitysolution.com" + url.pathname + url.search;
+
+    if (request.method === "OPTIONS") {
+      return new Response(null, {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+          "Access-Control-Allow-Headers": "*",
+          "Access-Control-Expose-Headers": "*",
+          "Access-Control-Max-Age": "86400",
+        }
+      });
+    }
+
+    const headers = new Headers();
+    for (const [k, v] of request.headers.entries()) {
+      if (!["host", "origin", "referer"].includes(k.toLowerCase())) {
+        headers.set(k, v);
+      }
+    }
+    headers.set("Host", "interface.mahindramobilitysolution.com");
+
+    const resp = await fetch(target, {
+      method: request.method,
+      headers,
+      body: request.method !== "GET" ? await request.text() : undefined,
+    });
+
+    const respHeaders = new Headers(resp.headers);
+    respHeaders.set("Access-Control-Allow-Origin", "*");
+    respHeaders.set("Access-Control-Expose-Headers", "*");
+    respHeaders.delete("X-Content-Type-Options");
+    respHeaders.delete("X-Frame-Options");
+    respHeaders.delete("X-XSS-Protection");
+
+    return new Response(resp.body, {
+      status: resp.status,
+      headers: respHeaders,
+    });
+  }
+};
