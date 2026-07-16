@@ -41,7 +41,7 @@ When you tap the Like button, it makes a simple, anonymous request to an indepen
 
 ## 🌐 Web Version (No Download Required)
 Don't want to install an APK? No problem! You can use our fully trusted, cloud-hosted web version here:
-👉 **[bev-soh.edgeone.dev](https://bev-soh.edgeone.dev/)**
+👉 **[sam0-0.github.io/U4ME](https://sam0-0.github.io/U4ME/)**
 
 *Tip: If you prefer, you can simply download the `docs/index.html` file to your computer and double-click it to run the app locally right in your own browser! (Note: It will still use the Cloudflare Worker mentioned below to handle CORS).*
 
