@@ -40,6 +40,11 @@ When you tap the Like button, it makes a simple, anonymous request to an indepen
 4. Launch the app, login via OTP, and check your SOH!
 
 ## 🌐 Web Version (No Download Required)
+> [!WARNING]  
+> **Currently Offline (IP Ban Issue)**  
+> The Mahindra backend has temporarily IP-banned our Cloudflare Worker because it detected too many users logging in from the same proxy IP. We will be fixing this in the upcoming days!  
+> **In the meantime, please download and use the Android App**, which works perfectly because it communicates directly from your own personal IP address.
+
 Don't want to install an APK? No problem! You can use our fully trusted, cloud-hosted web version here:
 👉 **[sam0-0.github.io/U4ME](https://sam0-0.github.io/U4ME/)**
 
