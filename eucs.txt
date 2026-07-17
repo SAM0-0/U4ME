@@ -2,10 +2,10 @@ CAN ECUs on the Bus
 
 ECU ID	Name	Description
 
-0x1	EMS	Engine/EV Management System
-0x3	ESC	Electronic Stability Control
-0x4	EPS	Electric Power Steering
-0xa	EPB	Electronic Parking Brake
+0x1	  EMS	Engine/EV Management System
+0x3	  ESC	Electronic Stability Control
+0x4	  EPS	Electric Power Steering
+0xa	  EPB	Electronic Parking Brake
 0x18	IC	Instrument Cluster
 0x19	MBFM/BCM	Main Body Front Module / Body Control
 0x26	MCM	Main Control Module
