@@ -1,0 +1,46 @@
+CAN ECUs on the Bus 
+
+ECU ID	Name	Description
+
+0x1	EMS	Engine/EV Management System
+0x3	ESC	Electronic Stability Control
+0x4	EPS	Electric Power Steering
+0xa	EPB	Electronic Parking Brake
+0x18	IC	Instrument Cluster
+0x19	MBFM/BCM	Main Body Front Module / Body Control
+0x26	MCM	Main Control Module
+0x29	ICC	Infotainment Cluster Controller
+0x2a	HPC_C	Headunit PPC Connectivity
+0x2b	HPC_V	Headunit PPC Vehicle
+0x2c	FRONT_ZONE	Front Zone Controller
+0x2e	REAR_ZONE	Rear Zone Controller
+0x3a	HPC_AD	Headunit PPC ADAS
+0x3b	HPC_AP	Headunit PPC Parking
+0x61	MCU_FRONT	Front Motor Controller (AWD)
+0x62	BMS	Battery Management System
+0x63	LDC	Low-voltage DC Converter
+0x64	OBC	On-Board Charger
+0x69	BMS_SLAVE	BMS Slave
+0x6b	CCM	Climate Control Module
+0x6c	MCU_REAR	Rear Motor Controller
+
+
+CAN Message Groups → Property IDs
+
+CAN Msg ID	ECU	What's On It
+
+0x200	CCM	AC, blower, mode, temp, defrost, pet/camp/keep/econ
+0x10	VCU1	Drive enable, ignition, charge mode, pedal
+0x20	VCU1	Vehicle state, paddle shift
+0x100	VCU2	Gear, range, SOC, charger lock, custom mode
+0x100	VCU12	SOH, regen, motor torque, power, energy consumption
+0x10	VCU11	Cruise alert, motor speed
+0x20	BMS1	Contactor status
+0x100	BMS2	Battery temperature, charging status
+0x10	EPS1	Steering angle, SAS calibration
+0x10	IEB1	ESC, emergency braking, wheel speed
+0x10	SRS1	Crash, seatbelt, acceleration
+0x100	MCU11	Motor temperature
+0x10	FR_ZONE1	Parking sensors, turn signals, lighting
+0x100	FR_ZONE3	TPMS, doors, lights, theft
+0x100	HPCC	139 headunit control properties
