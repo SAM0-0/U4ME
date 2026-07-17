@@ -1,6 +1,7 @@
 <div align="center">
   <img src="app/src/main/res/drawable/ic_u4me_logo.jpg" alt="U4Me Logo" width="150" height="150" style="border-radius: 20px;">
   <h1>U4Me</h1>
+  <h2>Warning :  This app and site doesnt work anymore as Mahindra removed the SoH from Responses , so theres no way left to make it work again </h2>
   <p><b>A sleek, open-source Android client for Mahindra EV Owners to securely check their true State of Health (SOH).</b></p>
   
   [![GitHub Repo stars](https://img.shields.io/github/stars/SAM0-0/U4ME?style=social)](https://github.com/SAM0-0/U4ME)
